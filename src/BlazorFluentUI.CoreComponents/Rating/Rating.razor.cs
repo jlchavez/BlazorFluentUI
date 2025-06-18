@@ -1,9 +1,6 @@
-﻿using BlazorFluentUI.Style;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+﻿using Microsoft.AspNetCore.Components;
 
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BlazorFluentUI

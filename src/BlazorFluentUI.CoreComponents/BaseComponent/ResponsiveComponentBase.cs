@@ -13,9 +13,7 @@ namespace BlazorFluentUI
         private DotNetObjectReference<ResponsiveComponentBase>? selfReference;
 
         [Inject] IJSRuntime? JSRuntime { get; set; }
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
         protected ResponsiveMode CurrentMode { get; set; }

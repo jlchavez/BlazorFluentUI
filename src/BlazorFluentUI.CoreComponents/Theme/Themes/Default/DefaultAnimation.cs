@@ -1,9 +1,4 @@
-﻿using BlazorFluentUI.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlazorFluentUI.Themes.Default
+﻿namespace BlazorFluentUI.Themes.Default
 {
     public class DefaultAnimation : IAnimation
     {

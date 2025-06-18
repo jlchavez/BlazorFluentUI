@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace BlazorFluentUI
+﻿namespace BlazorFluentUI
 {
     public static class PersonaSize
     {

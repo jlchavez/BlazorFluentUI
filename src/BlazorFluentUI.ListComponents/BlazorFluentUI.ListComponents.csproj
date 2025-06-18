@@ -31,7 +31,6 @@
     </None>
   </ItemGroup>
 
-
   <ItemGroup>
     <ProjectReference Include="..\BlazorFluentUI.CoreComponents\BlazorFluentUI.CoreComponents.csproj" />
   </ItemGroup>

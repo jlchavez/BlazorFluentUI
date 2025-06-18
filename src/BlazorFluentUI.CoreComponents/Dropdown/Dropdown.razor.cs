@@ -17,6 +17,7 @@ namespace BlazorFluentUI
         [Parameter] public IEnumerable<IDropdownOption>? DefaultSelectedOptions { get; set; }
         [Parameter] public bool Disabled { get; set; }
         [Parameter] public int DropdownWidth { get; set; } = 0;
+        [Parameter] public int DropdownHeight { get; set; } = 0;
         [Parameter] public string? ErrorMessage { get; set; }
         [Parameter] public IEnumerable<IDropdownOption>? ItemsSource { get; set; }
         [Parameter] public RenderFragment<IDropdownOption>? ItemTemplate { get; set; }
@@ -34,12 +35,11 @@ namespace BlazorFluentUI
         [Parameter] public IEnumerable<IDropdownOption> SelectedOptions { get; set; } = new List<IDropdownOption>();
         //[Parameter] [Obsolete] public EventCallback<List<string>> SelectedKeysChanged { get; set; }
         [Parameter] public EventCallback<IEnumerable<IDropdownOption>> SelectedOptionsChanged { get; set; }
+        [Parameter] public DirectionalHint? DirectionalHint { set; get; }
 
         [Inject]
         private IJSRuntime? JSRuntime { get; set; }
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
 
@@ -158,6 +158,7 @@ namespace BlazorFluentUI
 
             if (MultiSelect)
             {
+                Console.WriteLine($"Active Count: {SelectedOptions.Count()}");
                 if (!SelectedOptions.Contains(option))
                     throw new Exception("This option was not already selected.");
 

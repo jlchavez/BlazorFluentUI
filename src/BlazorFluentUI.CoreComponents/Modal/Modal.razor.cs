@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Timers;
@@ -65,9 +64,7 @@ namespace BlazorFluentUI
 
         [Inject] private IJSRuntime? JSRuntime { get; set; }
 
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
 

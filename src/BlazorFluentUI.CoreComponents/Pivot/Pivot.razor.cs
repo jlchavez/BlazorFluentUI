@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorFluentUI
 {
@@ -22,8 +21,10 @@ namespace BlazorFluentUI
             get => _selectedKey;
             set
             {
-                if (Equals(_selectedKey, value))
+                if (_selectedKey == value)
+                {
                     return;
+                }
                 _selectedKey = value;
             }
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using BlazorFluentUI.Themes.Default;
+﻿using BlazorFluentUI.Themes.Default;
 
 namespace BlazorFluentUI
 {

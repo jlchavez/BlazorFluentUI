@@ -36,9 +36,7 @@ namespace BlazorFluentUI.Resize
         private Task<Rectangle>? boundsTask;
         private CancellationTokenSource boundsCTS = new();
 
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
         protected override Task OnInitializedAsync()

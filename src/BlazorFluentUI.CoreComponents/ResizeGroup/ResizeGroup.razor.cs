@@ -26,9 +26,7 @@ namespace BlazorFluentUI
         [Parameter] public EventCallback<TObject> OnDataReduced { get; set; }
         [Parameter] public EventCallback<TObject> OnDataGrown { get; set; }
 
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
         protected string hiddenParentStyles = "position:relative;";
@@ -317,8 +315,8 @@ namespace BlazorFluentUI
             {
                 if (baseModule != null)
                 {
-                    await baseModule!.InvokeVoidAsync("deregisterResizeEvent", _resizeEventGuid);
-                    await baseModule.DisposeAsync();
+                    await baseModule!.SafeInvokeVoidAsync("deregisterResizeEvent", _resizeEventGuid);
+                    await baseModule.SafeDisposeAsync();
                 }
                 selfReference?.Dispose();
 

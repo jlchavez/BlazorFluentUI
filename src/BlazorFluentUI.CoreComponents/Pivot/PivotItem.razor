@@ -1,7 +1,7 @@
 ﻿@namespace BlazorFluentUI
 @inherits FluentUIComponentBase
 
-<CommandButton key="@ItemKey"
+<CommandButton key="@ItemKey" type="button"
                   ClassName=@($"ms-Pivot-link mediumFont{(ParentPivot?.Selected == this ? " is-selected" : "")}")
                   OnClick="SelectItem"
                   AriaLabel=@AriaLabel
@@ -24,5 +24,15 @@
         {
             <span class="ms-Pivot-count"> (@ItemCount)</span>
         }
+        @if (!string.IsNullOrWhiteSpace(Badge))
+        {
+            <span class="ms-Pivot-badge @BadgeClass">
+                @(new MarkupString(Badge))
+            </span>
+        }
+@*         @if (ChildContent != null)
+        {
+            @ChildContent
+        } *@
     </span>
 </CommandButton>

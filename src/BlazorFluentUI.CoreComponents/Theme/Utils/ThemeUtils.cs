@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlazorFluentUI.Utils
+﻿namespace BlazorFluentUI.Utils
 {
     internal static class ThemeUtils
     {

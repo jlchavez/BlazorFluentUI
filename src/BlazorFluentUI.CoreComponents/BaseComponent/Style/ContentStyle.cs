@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlazorFluentUI.Style
+﻿namespace BlazorFluentUI.Style
 {
     public static class ContentStyle
     {

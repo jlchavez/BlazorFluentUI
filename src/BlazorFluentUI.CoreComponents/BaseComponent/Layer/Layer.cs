@@ -14,9 +14,7 @@ namespace BlazorFluentUI
     public class Layer : FluentUIComponentBase, IAsyncDisposable
     {
         [Inject] private IJSRuntime? JSRuntime { get; set; }
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
         //private const string PanelPath = "./_content/BlazorFluentUI.CoreComponents/panel.js";

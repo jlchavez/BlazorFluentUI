@@ -1,6 +1,5 @@
 ﻿@namespace BlazorFluentUI
 @inherits ButtonParameters
-@using Microsoft.AspNetCore.Components.Web
 
 @{
     isSplitButton = (Split && OnClick.HasDelegate && MenuItems != null);
@@ -46,6 +45,7 @@
             __builder.AddAttribute(28, "MenuItemTemplate", MenuItemTemplate);
         }
         __builder.AddAttribute(29, "ButtonBase", this);
+        __builder.AddAttribute(30, "AllowFocus", AllowFocus);
         __builder.CloseComponent();
     };
 
@@ -59,11 +59,12 @@
                     disabled=@GetDisabledStatus()
                     @onclick=@ClickHandler
                     @onkeydown=@KeyDownHandler
-                    data-is-focusable=@(this.Disabled || PrimaryDisabled || commandDisabled || isSplitButton ? "false" : "true")
+                    onmousedown="@(AllowFocus ? null : "event.preventDefault(); event.stopPropagation();")"
+                    data-is-focusable=@((!AllowFocus) || Disabled || PrimaryDisabled || commandDisabled || isSplitButton ? "false" : "true")
+                    data-allow-focus="@("false")"
                     style=@Style
                     aria-roledescription=@AriaRoleDescription
                     aria-label=@AriaLabel
-                    type="button"
                     @attributes=@UnknownProperties
                     @ref="RootElementReference">
                 @ButtonContentRederFragment()
@@ -77,7 +78,8 @@
                disabled=@GetDisabledStatus()
                @onclick=@ClickHandler
                @onkeydown=@KeyDownHandler
-               data-is-focusable=@(this.Disabled || PrimaryDisabled || commandDisabled || isSplitButton ? "false" : "true")
+               onmousedown="@(AllowFocus ? null : "event.preventDefault(); event.stopPropagation();")"
+               data-is-focusable=@((!AllowFocus) || Disabled || PrimaryDisabled || commandDisabled || isSplitButton ? "false" : "true")
                style=@Style
                aria-roledescription=@AriaRoleDescription
                aria-label=@AriaLabel

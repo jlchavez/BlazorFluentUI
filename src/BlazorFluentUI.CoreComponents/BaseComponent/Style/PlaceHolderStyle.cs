@@ -6,25 +6,24 @@ namespace BlazorFluentUI.Style
     {
         public static IList<Rule> GetPlaceholderStyle(string selectorName ,IRuleProperties properties)
         {
-            List<Rule>? placeholderRules = new();
-
-            placeholderRules.Add(new Rule()
+            List<Rule>? placeholderRules = new()
             {
-                Selector = new CssStringSelector() { SelectorName = $"{selectorName}::placeholder" },
-                Properties = properties
-            });
-
-            placeholderRules.Add(new Rule()
-            {
-                Selector = new CssStringSelector() { SelectorName = $"{selectorName}:-ms-input-placeholder" },
-                Properties = properties
-            });
-
-            placeholderRules.Add(new Rule()
-            {
-                Selector = new CssStringSelector() { SelectorName = $"{selectorName}::-ms-input-placeholder" },
-                Properties = properties
-            });
+                new Rule()
+                {
+                    Selector = new CssStringSelector() { SelectorName = $"{selectorName}::placeholder" },
+                    Properties = properties
+                },
+                new Rule()
+                {
+                    Selector = new CssStringSelector() { SelectorName = $"{selectorName}:-ms-input-placeholder" },
+                    Properties = properties
+                },
+                new Rule()
+                {
+                    Selector = new CssStringSelector() { SelectorName = $"{selectorName}::-ms-input-placeholder" },
+                    Properties = properties
+                }
+            };
 
             return placeholderRules;
         }

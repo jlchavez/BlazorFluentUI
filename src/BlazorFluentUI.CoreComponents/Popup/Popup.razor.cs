@@ -2,10 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 
 namespace BlazorFluentUI
 {
@@ -29,12 +26,8 @@ namespace BlazorFluentUI
 
         private string? _handleToLastFocusedElement;
 
-        [Inject]
-        private IJSRuntime JSRuntime { get; set; } = null!;
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
-
+        [Inject] private IJSRuntime? JSRuntime { get; set; }
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

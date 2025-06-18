@@ -57,24 +57,25 @@ namespace BlazorFluentUI.Style
 
         public static ICollection<Rule> FocusClear(string selectorName)
         {
-            HashSet<Rule>? focusStyles = new();
-
-            focusStyles.Add(new Rule()
+            HashSet<Rule>? focusStyles = new()
             {
-                Selector = new CssStringSelector() { SelectorName = $"{selectorName}::-moz-focus-inner" },
-                Properties = new CssString()
+                new Rule()
                 {
-                    Css = $"border:0"
-                }
-            });
-            focusStyles.Add(new Rule()
-            {
-                Selector = new CssStringSelector() { SelectorName = $"{selectorName}" },
-                Properties = new CssString()
+                    Selector = new CssStringSelector() { SelectorName = $"{selectorName}::-moz-focus-inner" },
+                    Properties = new CssString()
+                    {
+                        Css = $"border:0"
+                    }
+                },
+                new Rule()
                 {
-                    Css = $"outline:transparent;"
+                    Selector = new CssStringSelector() { SelectorName = $"{selectorName}" },
+                    Properties = new CssString()
+                    {
+                        Css = $"outline:transparent;"
+                    }
                 }
-            });
+            };
             return focusStyles;
         }
 

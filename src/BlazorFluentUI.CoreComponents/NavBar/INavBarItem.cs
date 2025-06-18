@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BlazorFluentUI.Routing
+﻿namespace BlazorFluentUI.Routing
 {
     public interface INavBarItem : IContextualMenuItem, ICommandBarItem
     {

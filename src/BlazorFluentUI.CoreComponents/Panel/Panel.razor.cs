@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -14,19 +12,13 @@ namespace BlazorFluentUI
     public partial class Panel : FluentUIComponentBase, IAsyncDisposable
     {
         [Inject]
-        private IJSRuntime JSRuntime { get; set; } = null!;
-
-        [Inject] 
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
-
+        private IJSRuntime? JSRuntime { get; set; }
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
-        private const string panelJs = "panel.js";
 
-        private string? _scriptPath;
-
-        private string ScriptPath => _scriptPath ??= $"{FluentUISettings.RootPath}{panelJs}";
+        private const string ScriptPath = "./_content/BlazorFluentUI.CoreComponents/panel.js";
         private IJSObjectReference? scriptModule;
+
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
@@ -484,8 +476,9 @@ namespace BlazorFluentUI
                     {
                         await scriptModule.InvokeVoidAsync("unregisterHandler", _mouseDownId);
                     }
-                    await scriptModule.DisposeAsync();
-                    await baseModule.DisposeAsync();
+
+                    await scriptModule.SafeDisposeAsync();
+                    await baseModule.SafeDisposeAsync();
                 }
                 selfReference?.Dispose();
 

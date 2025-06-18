@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlazorFluentUI.Routing
+﻿namespace BlazorFluentUI.Routing
 {
     public enum NavMatchType
     {

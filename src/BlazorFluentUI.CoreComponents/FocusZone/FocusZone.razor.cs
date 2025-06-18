@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Components;
@@ -13,13 +12,9 @@ namespace BlazorFluentUI
     public partial class FocusZone : FluentUIComponentBase, IAsyncDisposable
     {
         [Inject] private IJSRuntime? JSRuntime { get; set; }
-        private const string focusZoneJs = "focusZone.js";
-        private string? _scriptPath;
-        private string ScriptPath => _scriptPath ??= $"{FluentUISettings.RootPath}{focusZoneJs}";
+        private const string ScriptPath = "./_content/BlazorFluentUI.CoreComponents/focusZone.js";
         private IJSObjectReference? scriptModule;
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
         [Parameter] public bool AllowFocusRoot { get => allowFocusRoot; set { if (value != allowFocusRoot) { updateFocusZone = true; allowFocusRoot = value; } } }
@@ -191,11 +186,11 @@ namespace BlazorFluentUI
             {
                 if (scriptModule != null)
                 {
-                    await scriptModule!.InvokeVoidAsync("unregisterFocusZone", selfReference);
-                    await scriptModule.DisposeAsync();
+                    await scriptModule!.SafeInvokeVoidAsync("unregisterFocusZone", selfReference);
+                    await scriptModule.SafeDisposeAsync();
                 }
                 if (baseModule != null)
-                    await baseModule.DisposeAsync();
+                    await baseModule.SafeDisposeAsync();
 
                 selfReference?.Dispose();
 

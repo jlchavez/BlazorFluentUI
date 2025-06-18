@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlazorFluentUI.Models
+﻿namespace BlazorFluentUI.Models
 {
     public class OverflowItem : IOverflowSetItem
     {

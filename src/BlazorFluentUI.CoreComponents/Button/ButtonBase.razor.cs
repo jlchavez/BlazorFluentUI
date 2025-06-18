@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using BlazorFluentUI.Style;
 
 namespace BlazorFluentUI
 {
@@ -22,9 +21,7 @@ namespace BlazorFluentUI
 
         [Inject] private IJSRuntime? JSRuntime { get; set; }
 
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
         protected bool showMenu = false;

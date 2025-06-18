@@ -1,5 +1,4 @@
 ﻿@namespace BlazorFluentUI
-@using Microsoft.AspNetCore.Components.Forms
 @inherits ValidationSummary
 
 @{ var validationMessages = Model is null ? FluentUIEditContext.GetValidationMessages() : FluentUIEditContext.GetValidationMessages(new FieldIdentifier(Model, string.Empty));

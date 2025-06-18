@@ -1,6 +1,5 @@
 ﻿@namespace BlazorFluentUI
 @inherits FluentUIComponentBase
-@using Microsoft.AspNetCore.Components.Web  
 
 <div class=@($"{GlobalClassNames["root"]} {(Disabled ? GlobalClassNames["disabled"] : GlobalClassNames["enabled"])} {(Vertical ? GlobalClassNames["column"] : GlobalClassNames["row"])} {ClassName}")
      style=@Style>

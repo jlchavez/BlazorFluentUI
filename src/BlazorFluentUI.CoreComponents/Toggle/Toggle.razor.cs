@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Windows.Input;

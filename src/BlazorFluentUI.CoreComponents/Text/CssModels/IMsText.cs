@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlazorFluentUI
+﻿namespace BlazorFluentUI
 {
-	public interface IMsText : IRuleProperties
+    public interface IMsText : IRuleProperties
 	{
 		string? Color { get; set; }
 

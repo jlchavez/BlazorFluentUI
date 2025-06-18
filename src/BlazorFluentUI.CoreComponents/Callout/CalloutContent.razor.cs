@@ -13,15 +13,10 @@ namespace BlazorFluentUI
     {
 
         [Inject] private IJSRuntime? JSRuntime { get; set; }
-        [Inject]
-        private IFluentUISettings FluentUISettings { get; set; } = null!;
-        private string BasePath => FluentUISettings.BasePath;
+        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
         private IJSObjectReference? baseModule;
 
-        private const string calloutJs = "callout.js";
-        private string? _scriptPath;
-        private string CallOutPath => _scriptPath ??= $"{FluentUISettings.RootPath}{calloutJs}";
-        //private const string CalloutPath = "./_content/BlazorFluentUI.CoreComponents/callout.js";
+        private const string CalloutPath = "./_content/BlazorFluentUI.CoreComponents/callout.js";
         private IJSObjectReference? calloutModule;
 
 
@@ -107,7 +102,7 @@ namespace BlazorFluentUI
             if (baseModule == null)
                 baseModule = await JSRuntime!.InvokeAsync<IJSObjectReference>("import", token, BasePath);
             if (calloutModule == null)
-                calloutModule = await JSRuntime!.InvokeAsync<IJSObjectReference>("import", token, CallOutPath);
+                calloutModule = await JSRuntime!.InvokeAsync<IJSObjectReference>("import", token, CalloutPath);
 
             if (!isEventHandlersRegistered)
             {

@@ -13,6 +13,8 @@ namespace BlazorFluentUI
         [Parameter] public string? HeaderText { get; set; }
         [Parameter] public string? ItemKey { get; set; }
         [Parameter] public string? ItemCount { get; set; }
+        [Parameter] public string? Badge { get; set; }
+        [Parameter] public string? BadgeClass { get; set; }
 
         [Parameter] public string? IconName { get; set; }
         [Parameter] public string? IconSrc { get; set; }

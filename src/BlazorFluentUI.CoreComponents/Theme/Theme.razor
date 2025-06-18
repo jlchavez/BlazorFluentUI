@@ -93,7 +93,7 @@
 </style>
 
 <CascadingValue Value="ThemeProvider?.Theme" Name="Theme">
-    <div dir="ltr">
+    <div dir="ltr" class="w-100 h-100">
         @*This is a fix to allow some fonts to display properly.  We may want to move this later.*@
         @ChildContent
     </div>
@@ -160,42 +160,42 @@
                     sbuilder.Append($"--palette-{name}: {val};");
                 }
 
-                props = ThemeProvider.Theme.SemanticColors.GetType().GetProperties();
+                props = ThemeProvider!.Theme.SemanticColors.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
                     sbuilder.Append($"--semanticColors-{name}: {prop.GetValue(this.ThemeProvider?.Theme.SemanticColors, null)};");
                 }
 
-                props = ThemeProvider.Theme.SemanticTextColors.GetType().GetProperties();
+                props = ThemeProvider!.Theme.SemanticTextColors.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
                     sbuilder.Append($"--semanticTextColors-{name}: {prop.GetValue(this.ThemeProvider?.Theme.SemanticTextColors, null)};");
                 }
 
-                props = ThemeProvider.Theme.Effects.GetType().GetProperties();
+                props = ThemeProvider!.Theme.Effects.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
                     sbuilder.Append($"--effects-{name}: {prop.GetValue(this.ThemeProvider?.Theme.Effects, null)};");
                 }
 
-                props = ThemeProvider.Theme.Depths.GetType().GetProperties();
+                props = ThemeProvider!.Theme.Depths.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
                     sbuilder.Append($"--depths-{name}: {prop.GetValue(this.ThemeProvider?.Theme.Depths)};");
                 }
 
-                props = ThemeProvider.Theme.Animation.GetType().GetProperties();
+                props = ThemeProvider!.Theme.Animation.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
                     sbuilder.Append($"--animation-{name}: {prop.GetValue(this.ThemeProvider?.Theme.Animation)};");
                 }
 
-                props = ThemeProvider.Theme.CommonStyle.GetType().GetProperties();
+                props = ThemeProvider!.Theme.CommonStyle.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
@@ -209,21 +209,21 @@
                     sbuilder.Append($"--fontSize-{name}: {prop.GetValue(this.ThemeProvider?.Theme.FontStyle.FontSize)};");
                 }
 
-                props = ThemeProvider.Theme.FontStyle.FontWeight.GetType().GetProperties();
+                props = ThemeProvider!.Theme.FontStyle.FontWeight.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
                     sbuilder.Append($"--fontWeight-{name}: {prop.GetValue(this.ThemeProvider?.Theme.FontStyle.FontWeight)};");
                 }
 
-                props = ThemeProvider.Theme.FontStyle.IconFontSize.GetType().GetProperties();
+                props = ThemeProvider!.Theme.FontStyle.IconFontSize.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
                     sbuilder.Append($"--iconFontSize-{name}: {prop.GetValue(this.ThemeProvider?.Theme.FontStyle.IconFontSize)};");
                 }
 
-                props = ThemeProvider.Theme.ZIndex.GetType().GetProperties();
+                props = ThemeProvider!.Theme.ZIndex.GetType().GetProperties();
                 foreach (var prop in props)
                 {
                     var name = prop.Name;
