@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace BlazorFluentUI
 {
@@ -28,8 +29,12 @@ namespace BlazorFluentUI
 
         private string? _handleToLastFocusedElement;
 
-        [Inject] private IJSRuntime? JSRuntime { get; set; }
-        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
+        [Inject]
+        private IJSRuntime JSRuntime { get; set; } = null!;
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
+
         private IJSObjectReference? baseModule;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

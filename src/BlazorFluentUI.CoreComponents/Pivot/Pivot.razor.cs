@@ -22,10 +22,8 @@ namespace BlazorFluentUI
             get => _selectedKey;
             set
             {
-                if (_selectedKey == value)
-                {
+                if (Equals(_selectedKey, value))
                     return;
-                }
                 _selectedKey = value;
             }
         }

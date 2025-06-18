@@ -26,7 +26,9 @@ namespace BlazorFluentUI
 
         [Parameter] public EventCallback<ImageLoadState> OnLoadingStateChange { get; set; }
 
-        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
         private IJSObjectReference? baseModule;
 
         protected const string KEY_PREFIX = "fabricImage";

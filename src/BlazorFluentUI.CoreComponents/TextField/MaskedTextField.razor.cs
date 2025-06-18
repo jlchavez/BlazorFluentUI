@@ -100,7 +100,9 @@ namespace BlazorFluentUI
 
         private Dictionary<char, Regex> ParsedMaskFormat = new();
 
-        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
         private IJSObjectReference? baseModule;
 
 

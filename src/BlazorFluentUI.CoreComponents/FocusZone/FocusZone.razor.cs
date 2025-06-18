@@ -13,9 +13,13 @@ namespace BlazorFluentUI
     public partial class FocusZone : FluentUIComponentBase, IAsyncDisposable
     {
         [Inject] private IJSRuntime? JSRuntime { get; set; }
-        private const string ScriptPath = "./_content/BlazorFluentUI.CoreComponents/focusZone.js";
+        private const string focusZoneJs = "focusZone.js";
+        private string? _scriptPath;
+        private string ScriptPath => _scriptPath ??= $"{FluentUISettings.RootPath}{focusZoneJs}";
         private IJSObjectReference? scriptModule;
-        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
         private IJSObjectReference? baseModule;
 
         [Parameter] public bool AllowFocusRoot { get => allowFocusRoot; set { if (value != allowFocusRoot) { updateFocusZone = true; allowFocusRoot = value; } } }

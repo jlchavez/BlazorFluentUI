@@ -1,4 +1,5 @@
-﻿using Microsoft.JSInterop;
+﻿using System;
+using Microsoft.JSInterop;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -28,6 +29,7 @@ namespace BlazorFluentUI
 
         public readonly static List<int> RESPONSIVE_MAX_CONSTRAINT = new() { 479, 639, 1023, 1365, 1919, 99999999 };
 
+        [Obsolete]
         public static async Task<ResponsiveMode> GetResponsiveModeAsync(IJSRuntime JSRuntime)
         {
             string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";

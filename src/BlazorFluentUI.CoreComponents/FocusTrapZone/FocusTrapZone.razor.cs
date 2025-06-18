@@ -10,8 +10,13 @@ namespace BlazorFluentUI
     {
         [Inject]
         private IJSRuntime? JSRuntime { get; set; }
-        private const string ScriptPath = "./_content/BlazorFluentUI.CoreComponents/focusTrapZone.js";
+        private const string FocusTrapZoneJs = "focusTrapZone.js";
+        private string? _scriptPath;
+        private string ScriptPath => _scriptPath ??= $"{FluentUISettings.RootPath}{FocusTrapZoneJs}";
         private IJSObjectReference? scriptModule;
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
 
         [Parameter]
         public RenderFragment? ChildContent { get; set; }
@@ -74,8 +79,10 @@ namespace BlazorFluentUI
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (scriptModule == null)
+            {
+                Console.WriteLine("Loading FocusTrapZona Script {0}", ScriptPath);
                 scriptModule = await JSRuntime!.InvokeAsync<IJSObjectReference>("import", ScriptPath);
-
+            }
             if (firstRender)
             {
                 RegisterFocusTrapZone();

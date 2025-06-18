@@ -26,7 +26,9 @@ namespace BlazorFluentUI
         [Parameter] public EventCallback<TObject> OnDataReduced { get; set; }
         [Parameter] public EventCallback<TObject> OnDataGrown { get; set; }
 
-        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
         private IJSObjectReference? baseModule;
 
         protected string hiddenParentStyles = "position:relative;";

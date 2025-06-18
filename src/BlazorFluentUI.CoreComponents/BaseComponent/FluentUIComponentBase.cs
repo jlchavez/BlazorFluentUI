@@ -51,7 +51,9 @@ namespace BlazorFluentUI
 
         [Inject] ScopedStatics? ScopedStatics { get; set; }
 
-        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
         private IJSObjectReference? baseModule;
 
         protected CancellationTokenSource cancellationTokenSource = new();

@@ -70,7 +70,9 @@ namespace BlazorFluentUI
         [Inject]
         private IJSRuntime JSRuntime { get; set; } = default!;
 
-        private const string BasePath = "./_content/BlazorFluentUI.CoreComponents/baseComponent.js";
+        [Inject]
+        private IFluentUISettings FluentUISettings { get; set; } = null!;
+        private string BasePath => FluentUISettings.BasePath;
         private IJSObjectReference? baseModule;
 
         private bool canSelect;
